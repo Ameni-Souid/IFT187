@@ -1,0 +1,18 @@
+Nom,Domaine,Calculé,Description
+anciennenté,entier non négatif,non,Nombre d'années d'expérience en tant que chargé de cours
+code postal,6 caractères avec alternance lettre chiffre,non,Code postal du lieu où habite la personne
+compétences,liste de valeurs,non,Ensemble des activités (sigles) pour lesquelles la personne professeure est apte à enseigner
+département,texte,oui,Département responsable du cours calculé sur la base du sigle
+discipline,texte,non,Disciplines qui décrit le mieux la spécialité du professeur
+disponibilité,liste de valeurs,non,Ensemble des trimestre pour lesquels la personne professeur est disponible
+diplome,texte,non,Dernier diplome d'étudiant
+description,texte,non,Description d’un type d’une évaluation
+matricule,8 chiffres,non,Identifiant unique d’une personne étudiante au sein de l’UdeS
+nom,texte,non,Nom de la personne
+note,"entier entre 0 et 100",non,Note d’une évaluation
+numéro,entier entre 0 et 5,non,Numéro d'un groupe d'activité
+sigle,"6 caractères : 3 lettres suivies par 3 chiffres",non,Identifiant unique d’une activité au sein de l’UdeS
+titre,texte,non,Titre officiel du cours
+trimestre,"5 caractères : année en 4 chiffres et une lettre (A,H,E)",non,Code du trimestre
+type,"IN,PR,FI,TP",non,Type d’évaluation
+ville,texte,non,Ville où habite la personne

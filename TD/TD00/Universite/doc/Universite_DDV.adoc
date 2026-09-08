@@ -1,0 +1,79 @@
+// Signature du document
+:organisation: CoFELI
+:copyright: CoFELI
+:entrepot: Scriptorum
+:depot: Scriptorum
+:!branche:
+:sigle: TMR_02
+:titre: Exemple Université - Théorie et modèles relationnels
+:sous_titre: Fondements
+:keywords: bases de données, théorie relationnelle, modèles relationnels
+:revnumber: 1.0.0.b
+:revdate: 2026-01-09
+:version-label: document de travail, ne pas citer
+:author: Christina KHNAISSER
+:email: christina.khnaisser@usherbrooke.ca
+:author2: Luc LAVOIE
+:email2: luc.lavoie@usherbrooke.ca
+
+== Université
+
+=== Énoncé du problème
+// tag::desccription[]
+L’Université de Samarcande (UdeS), fondée en 1927, propose différentes activités pédagogiques dans
+plusieurs domaines. Depuis deux ans, le nombre de personnes étudiantes a beaucoup augmenté de sorte
+que l’activité de gestion manuelle des évaluations mobilise beaucoup de ressources.
+L’Université désire constituer un répertoire des activités proposées et consigner
+les inscriptions et les résultats (notes) par étudiant, par activité et par type d’évaluation.
+// end::desccription[]
+// tag::predicat[]
+
+=== Prédicats
+Activité::
+L’activité identifiée par le sigle « sigle », décrite par le titre « titre », est offerte par l’UdeS.
+
+Étudiant::
+L’étudiant identifié par le matricule « matricule », décrit par le nom « nom »  habite à l’adresse « adresse »
+est admis à l’UdeS.
+
+TE::
+Le type d’évaluation identifié par le code « code », décrit par la description « description » est
+autorisé à l’UdeS.
+
+Résultat::
+L’étudiant dont le matricule est « matricule » est inscrit à l’activité « activite » au trimestre « trimestre »
+à l’UdeS et a obtenu la note « note » lors de l’évaluation « TE ».
+// end::predicat[]
+
+=== Relation
+[source,datalog]
+----
+Evaluation {Etudiant, Activite, Departement}
+  Etudiant      {matricule, nom, adresse}
+    cle {matricule}
+  Activite      {sigle, titre}
+    cle {sigle}
+  TypeEvalation {code, description}
+    cle {code}
+  Résultat      {matricule, TE, activité, trimestre, note}
+    cle {matricule, TE, activité, trimestre}
+----
+
+=== Contraintes
+
+==== Clés référentielles
+----
+Ref : Résultat.matricule → Étudiant.matricule
+
+Ref : Résultat.TE → TypeÉvaluation.code
+
+Ref : Résultat.activité → Activité.sigle
+----
+
+==== Contraintes générales
+
+Un étudiant doit s'inscrire à au moins une activité et à au plus cinq activités.
+
+Un étudiant ne peut pas s'inscrire à la même activité plus que trois fois.
+
+Une activité ne peut pas être offerte deux fois le même trimestre.
